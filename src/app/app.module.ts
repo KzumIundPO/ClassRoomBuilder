@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule, JsonpModule } from '@angular/http';
+import { Md5 } from 'ts-md5/dist/md5';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -11,6 +12,7 @@ import { LandingPage } from '../pages/landing-page/landing-page';
 import { LandingPageMain } from '../pages/landing-page-main/landing-page-main';
 import { Students } from '../pages/students/students';
 import { Seating } from '../pages/seating/seating';
+import { globalVariables } from '../pages/home/globalVariables';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { Seating } from '../pages/seating/seating';
   providers: [
     StatusBar,
     SplashScreen,
+    globalVariables,
+    Md5,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

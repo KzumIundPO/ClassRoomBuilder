@@ -4,6 +4,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
+import { globalVariables } from "../home/globalVariables";
 import { Students } from '../students/students';
 
 @IonicPage()
@@ -17,32 +18,24 @@ export class LandingPage {
   classes = [];
   
   object = {
-    "fname": "Dolly",
-    "lname": "Buster",
-    "class": "PornoStar",
-    "pathToPicture": "/home/aletuna/bla.jpg"
-  };
-/*
-  object: any = 
-  {
-  "fname": "Teddy",
-    "lname": "Test",
+    "fname": "Peter",
+    "lname": "Zufall",
     "class": "E3FI3",
     "pathToPicture": "/home/aletuna/bla.jpg"
   };
-*/
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public globalVariables: globalVariables) {
      
   }
 
   private getClass(){
-    this.http.get('http://lyra.b4zz-pony.de:3000/classrooms').map(res => res.json()).subscribe(data => {data.forEach(element => {this.classes.push(element)})
+    this.http.get('http://lyra.b4zz-pony.de:3000/classrooms?token=' + this.globalVariables.token).map(res => res.json()).subscribe(data => {data.forEach(element => {this.classes.push(element)})
     console.log(this.classes);
     })
   }
 
   private getStudent(){
-  this.http.get('http://lyra.b4zz-pony.de:3000/students').map(res => res.json()).subscribe(data => {
+  this.http.get('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token).map(res => res.json()).subscribe(data => {
     data.forEach(element => {
       this.students.push(element);
     });
@@ -50,8 +43,8 @@ export class LandingPage {
   });
   }
 
-private postStudent(){
-  this.http.post('http://lyra.b4zz-pony.de:3000/students', this.object).subscribe(res => {
+private addStudent(){
+  this.http.post('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token, this.object).subscribe(res => {
         console.log(res.json());
       }, (err) => {
         console.log(err);

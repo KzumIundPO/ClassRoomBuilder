@@ -11,21 +11,20 @@
     <ion-col text-center>
 
       <ion-list>
-           <img src="../src/pages/home/CRB_LOGO_FONT.png">
         <ion-item>
           <ion-label>Username</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" [(ngModel)]="_username"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label>Password</ion-label>
-          <ion-input type="password"></ion-input>
+          <ion-input type="password" [(ngModel)]="_password"></ion-input>
         </ion-item>
 
       </ion-list>
 
       <div padding>
-        <button (click)="goToLandingPageMain()" ion-button full>Login</button>
+        <button (click)="goToLandingPageMain(); getToken()" ion-button full>Login</button>
       </div>
     </ion-col>
   </ion-row>
