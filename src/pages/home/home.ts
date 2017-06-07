@@ -45,10 +45,12 @@ export class HomePage {
   })
 }*/
 
-  private getToken_(){
+  private getToken(){
     let pw = this.hashPassword(this._password);
-    this.http.get('http://lyra.b4zz-pony.de:3000/authentication?user=' + this._username + '%pasHash=' + pw).map(res => res.json()).subscribe(data => {this.token = data 
+    this.http.get('http://lyra.b4zz-pony.de:3000/authentication?uname=' + this._username + '&passHash=' + pw).map(res => res.json()).subscribe(data => {this.token = data 
     this.globalVariables.token = this.token;
+    console.log(this.globalVariables.token);
+    console.log(this.token);
   })
   }
 
