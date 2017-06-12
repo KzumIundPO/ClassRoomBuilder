@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Panel</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <ion-list row>
+    <h3>Passwort ändern</h3>
+    <ion-item>
+        <ion-label>Old Password</ion-label>
+        <ion-input type="password" [(ngModel)]="_oldPW"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>New Password</ion-label>
+        <ion-input type="password" [(ngModel)]="_newPW"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>Confirm new Password</ion-label>
+        <ion-input type="password" [(ngModel)]="_newPWConfirm"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button (click)="changePW()" ion-button full>Change Password</button>
+    </ion-item>
+    <ion-item>
+        <ion-label>Username</ion-label>
+        <ion-input type="text" [(ngModel)]="_userName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button (click)="logout()" ion-button full>Create User</button>
+    </ion-item>
+    </ion-list>
+
+</ion-content>

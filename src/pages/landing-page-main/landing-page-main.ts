@@ -4,13 +4,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Students } from '../students/students';
 import { Seating } from '../seating/seating';
 import { LandingPage } from '../landing-page/landing-page';
+import { Panel } from '../panel/panel';
 
-/**
- * Generated class for the LandingPageMain page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-landing-page-main',
@@ -35,6 +30,10 @@ export class LandingPageMain {
 
   goToStudent(){
     this.navCtrl.push(Students);
+  }
+
+  goToPanel(){
+    this.navCtrl.push(Panel);
   }
 
 }

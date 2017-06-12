@@ -16,26 +16,28 @@ export class LandingPage {
 
   students = [];
   classes = [];
+
+  //Create Schüler, Class - Name - Picture
   
   object = {
-    "fname": "Peter",
-    "lname": "Zufall",
-    "class": "E3FI3",
+    "fname": "Teddy",
+    "lname": "Test",
+    "classId": "1",
     "pathToPicture": "/home/aletuna/bla.jpg"
   };
-  
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public globalVariables: globalVariables) {
      
   }
 
   private getClass(){
-    this.http.get('http://lyra.b4zz-pony.de:3000/classrooms?token=' + this.globalVariables.token).map(res => res.json()).subscribe(data => {data.forEach(element => {this.classes.push(element)})
+    this.http.get('http://lyra.b4zz-pony.de:3000/classrooms?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId).map(res => res.json()).catch(this.handleError).subscribe(data => {data.forEach(element => {this.classes.push(element)})
     console.log(this.classes);
     })
   }
 
   private getStudent(){
-  this.http.get('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token).map(res => res.json()).subscribe(data => {
+  return this.http.get('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId).map(res => res.json()).catch(this.handleError).subscribe(data => {
     data.forEach(element => {
       this.students.push(element);
     });
@@ -44,18 +46,24 @@ export class LandingPage {
   }
 
 private addStudent(){
-  this.http.post('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token, this.object).subscribe(res => {
+  this.http.post('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId, this.object).subscribe(res => {
         console.log(res.json());
       }, (err) => {
         console.log(err);
 	})};
-  
-  /*
-  handleError(error) {
-      console.error(error);
-      return Observable.throw(error.json().error || 'Server error');
-   }
-   */
+
+private handleError (error: Response | any) {
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    console.error(errMsg);
+    return Observable.throw(errMsg);
+  }
 
   goToStudent(){
     this.navCtrl.push(Students);

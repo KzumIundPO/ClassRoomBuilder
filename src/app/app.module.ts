@@ -13,6 +13,7 @@ import { LandingPageMain } from '../pages/landing-page-main/landing-page-main';
 import { Students } from '../pages/students/students';
 import { Seating } from '../pages/seating/seating';
 import { globalVariables } from '../pages/home/globalVariables';
+import { Panel } from '../pages/panel/panel';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { globalVariables } from '../pages/home/globalVariables';
     LandingPage,
     Students,
     LandingPageMain,
-    Seating
+    Seating,
+    Panel
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { globalVariables } from '../pages/home/globalVariables';
     LandingPage,
     Students,
     LandingPageMain,
-    Seating
+    Seating,
+    Panel
   ],
   providers: [
     StatusBar,
