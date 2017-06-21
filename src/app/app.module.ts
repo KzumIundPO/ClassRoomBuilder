@@ -14,6 +14,7 @@ import { Students } from '../pages/students/students';
 import { Seating } from '../pages/seating/seating';
 import { globalVariables } from '../pages/home/globalVariables';
 import { Panel } from '../pages/panel/panel';
+import { Popover } from '../components/popover/popover';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { Panel } from '../pages/panel/panel';
     Students,
     LandingPageMain,
     Seating,
-    Panel
+    Panel,
+    Popover
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { Panel } from '../pages/panel/panel';
     Students,
     LandingPageMain,
     Seating,
-    Panel
+    Panel,
+    Popover
   ],
   providers: [
     StatusBar,

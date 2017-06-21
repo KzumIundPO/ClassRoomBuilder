@@ -8,6 +8,9 @@
 
 <ion-content padding>
 <ion-list *ngFor="let student of students">
+  <ion-item>
+    <button (click)="addStudent()" ion-button item-center>Schüler hinzufügen</button>
+  </ion-item>
     <ion-item>
       <ion-avatar item-left>
         <ion-icon name="images"></ion-icon>

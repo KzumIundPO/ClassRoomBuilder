@@ -10,7 +10,8 @@
   <ion-list row>
     <ion-item item-left>
       <ion-label>Klasse</ion-label>
-      <ion-input type="text" ng-model="_class"></ion-input>
+      <ion-select *ngFor="let class of classes"></ion-select>
+      <ion-option>{{class}}</ion-option>
     </ion-item>
     <ion-item item-right>
       <button (click)="getStudent()" ion-button item-right>students</button>

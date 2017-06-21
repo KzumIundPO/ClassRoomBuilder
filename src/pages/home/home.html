@@ -11,6 +11,7 @@
     <ion-col text-center>
 
       <ion-list>
+        <img src="./CRB_LOGO_FONT.png">
         <ion-item>
           <ion-label>Username</ion-label>
           <ion-input type="text" [(ngModel)]="_username"></ion-input>
@@ -21,7 +22,7 @@
         </ion-item>
       </ion-list>
       <div padding>
-        <button (click)="goToLandingPageMain(); getToken();" ion-button full>Login</button>
+        <button (click)="getToken()" ion-button full>Login</button>
       </div>
     </ion-col>
   </ion-row>

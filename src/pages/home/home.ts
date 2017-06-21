@@ -4,6 +4,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import { Md5 } from 'ts-md5/dist/md5';
+import { ToastController } from 'ionic-angular';
 
 import { globalVariables } from "../home/globalVariables";
 import { LandingPageMain } from '../landing-page-main/landing-page-main';
@@ -19,13 +20,22 @@ export class HomePage {
   userInfo = [];
   admin = false;
 
-  constructor(public navCtrl: NavController, public http: Http, public globalVariables: globalVariables, public md5: Md5) {
+  constructor(public navCtrl: NavController, public http: Http, public globalVariables: globalVariables, public md5: Md5, public toastCtrl: ToastController) {
 
   }
 
   //NAVIGATION -> Landing Page Main
   goToLandingPageMain() {
-    this.navCtrl.push(LandingPageMain);
+    if(!this.globalVariables.token){
+      let toast = this.toastCtrl.create({
+      message: 'Can not Login!',
+      duration: 5000
+      });
+      toast.present();
+    }
+    else{
+      this.navCtrl.push(LandingPageMain);
+    }
   }
 
   //Hash Password
@@ -45,6 +55,7 @@ export class HomePage {
         this.globalVariables.accountId = this.userInfo["accountId"];
         console.log(this.globalVariables.token);
         console.log(this.userInfo);
+        this.goToLandingPageMain();
       })
   }
    private handleError (error: Response | any) {

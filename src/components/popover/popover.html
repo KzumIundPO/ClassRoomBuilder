@@ -1,0 +1,16 @@
+<div>
+  {{text}}
+</div>
+<ion-list>
+  <ion-item>
+    <ion-label>Username</ion-label>
+    <ion-input type="text" [(ngModel)]="_createUserName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Password</ion-label>
+    <ion-input type="password" [(ngModel)]="_createPassword"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-checkbox [(ngModel)]="isAdmin" (ionChange)="updateAdminStatus()"></ion-checkbox>
+  </ion-item>
+</ion-list>
