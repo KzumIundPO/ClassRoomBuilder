@@ -17,7 +17,7 @@ export class Popover {
   }
 
   private addNewUser(){
-    //POST to User table 
+    //POST to User table, hash PW MD5
   }
 
   private updateAdminStatus(){

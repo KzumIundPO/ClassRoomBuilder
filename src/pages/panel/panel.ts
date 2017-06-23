@@ -42,10 +42,14 @@ export class Panel {
         this.userInfo = data;})*/
   }
 
-  private createUser(){
+  private createUser(myEvent){
       //POST User only for admin
       if (this.globalVariables.isAdmin) {
         //create User: define user object, Popup insert into object
+          let popover = this.popoverCtrl.create(popover);
+          popover.present({
+          ev: myEvent
+        });
         //this.http.post('http://lyra.b4zz-pony.de:3000/user?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId, this.newUser); 
       } else {
         let toast = this.toastCtrl.create({

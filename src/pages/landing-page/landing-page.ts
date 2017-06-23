@@ -8,6 +8,7 @@ import { PopoverController } from 'ionic-angular';
 
 import { globalVariables } from "../home/globalVariables";
 import { Students } from '../students/students';
+import { AddStudent } from './add-student';
 
 @IonicPage()
 @Component({
@@ -64,8 +65,13 @@ export class LandingPage {
     });
   }
 
-private addStudent(){
+private addStudent(myEvent){
   //PopUp and PopOver
+    let popover = this.popoverCtrl.create(AddStudent);
+    popover.present({
+      ev: myEvent
+    });
+
   //this.popoverCtrl.create(popover, {});
   /*this.http.post('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId, this.object).subscribe(res => {
         console.log(res.json());

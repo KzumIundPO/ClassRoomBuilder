@@ -15,6 +15,7 @@ import { Seating } from '../pages/seating/seating';
 import { globalVariables } from '../pages/home/globalVariables';
 import { Panel } from '../pages/panel/panel';
 import { Popover } from '../components/popover/popover';
+import { AddStudent } from '../components/addStudent/addStudent';
 
 @NgModule({
   declarations: [
