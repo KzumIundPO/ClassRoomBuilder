@@ -26,7 +26,8 @@ import { AddStudent } from '../components/addStudent/addStudent';
     LandingPageMain,
     Seating,
     Panel,
-    Popover
+    Popover,
+    AddStudent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +44,8 @@ import { AddStudent } from '../components/addStudent/addStudent';
     LandingPageMain,
     Seating,
     Panel,
-    Popover
+    Popover,
+    AddStudent
   ],
   providers: [
     StatusBar,

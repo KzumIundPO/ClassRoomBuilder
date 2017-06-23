@@ -8,7 +8,7 @@ import { PopoverController } from 'ionic-angular';
 
 import { globalVariables } from "../home/globalVariables";
 import { Students } from '../students/students';
-import { AddStudent } from './add-student';
+import { AddStudent } from '../../components/addStudent/addStudent';
 
 @IonicPage()
 @Component({

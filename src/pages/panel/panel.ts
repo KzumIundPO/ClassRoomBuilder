@@ -5,6 +5,8 @@ import { Md5 } from 'ts-md5/dist/md5';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { ToastController } from 'ionic-angular';
+import { Popover } from '../../components/popover/popover';
+import { PopoverController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -18,7 +20,7 @@ export class Panel {
     _newPWConfirm = "";
     _userName = "";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public globalVariables: globalVariables, public md5: Md5, public http: Http, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public globalVariables: globalVariables, public md5: Md5, public http: Http, public toastCtrl: ToastController, public popoverCtrl: PopoverController) {
     
   }
 
@@ -46,7 +48,7 @@ export class Panel {
       //POST User only for admin
       if (this.globalVariables.isAdmin) {
         //create User: define user object, Popup insert into object
-          let popover = this.popoverCtrl.create(popover);
+          let popover = this.popoverCtrl.create(Popover);
           popover.present({
           ev: myEvent
         });
