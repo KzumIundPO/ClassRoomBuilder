@@ -6,46 +6,28 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { Md5 } from 'ts-md5/dist/md5';
 
+import { SharedModule } from '../modules/shared.module';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { LandingPage } from '../pages/landing-page/landing-page';
-import { LandingPageMain } from '../pages/landing-page-main/landing-page-main';
-import { Students } from '../pages/students/students';
-import { Seating } from '../pages/seating/seating';
 import { globalVariables } from '../pages/home/globalVariables';
-import { Panel } from '../pages/panel/panel';
-import { Popover } from '../components/popover/popover';
-import { AddStudent } from '../components/addStudent/addStudent';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    LandingPage,
-    Students,
-    LandingPageMain,
-    Seating,
-    Panel,
-    Popover,
-    AddStudent
+    HomePage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     JsonpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    SharedModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    LandingPage,
-    Students,
-    LandingPageMain,
-    Seating,
-    Panel,
-    Popover,
-    AddStudent
+    HomePage
   ],
   providers: [
     StatusBar,

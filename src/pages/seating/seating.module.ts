@@ -11,6 +11,9 @@ import { Seating } from './seating';
   ],
   exports: [
     Seating
+  ],
+  entryComponents: [
+    Seating
   ]
 })
 export class SeatingModule {}

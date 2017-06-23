@@ -11,6 +11,9 @@ import { LandingPage } from './landing-page';
   ],
   exports: [
     LandingPage
+  ],
+  entryComponents: [
+    LandingPage
   ]
 })
 export class LandingPageModule {}

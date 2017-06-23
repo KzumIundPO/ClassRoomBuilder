@@ -11,6 +11,9 @@ import { AddStudent } from './addStudent';
   ],
   exports: [
     AddStudent
+  ],
+  entryComponents: [
+    AddStudent
   ]
 })
 export class AddStudentModule {}

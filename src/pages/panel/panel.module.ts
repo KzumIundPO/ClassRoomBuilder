@@ -11,6 +11,9 @@ import { Panel } from './panel';
   ],
   exports: [
     Panel
+  ],
+  entryComponents: [
+    Panel
   ]
 })
-export class SeatingModule {}
+export class PanelModule {}

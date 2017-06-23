@@ -11,6 +11,9 @@ import { Students } from './students';
   ],
   exports: [
     Students
+  ],
+  entryComponents: [
+    Students
   ]
 })
 export class StudentsModule {}

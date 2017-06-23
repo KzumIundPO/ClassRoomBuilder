@@ -11,6 +11,9 @@ import { Popover } from './popover';
   ],
   exports: [
     Popover
+  ],
+  entryComponents: [
+    Popover
   ]
 })
 export class PopoverModule {}

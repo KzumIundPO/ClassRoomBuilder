@@ -11,6 +11,9 @@ import { LandingPageMain } from './landing-page-main';
   ],
   exports: [
     LandingPageMain
+  ],
+  entryComponents: [
+    LandingPageMain
   ]
 })
 export class LandingPageMainModule {}
