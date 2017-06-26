@@ -14,8 +14,9 @@
     <input type="file" accept="image/*" id="upload" />
   </ion-item>
   <!-- Drop Down for Class? -->
-  <ion-select [(ngModel)]="gender">
-    <ion-option value="f">Female</ion-option>
-    <ion-option value="m">Male</ion-option>
-  </ion-select>
+    <ion-item item-left>
+      <ion-label>Klasse</ion-label>
+      <ion-select *ngFor="let class of classes"></ion-select>
+      <ion-option>{{class}}</ion-option>
+    </ion-item>
 </ion-list>

@@ -35,6 +35,7 @@ export class LandingPage {
   //check Token?
   ionViewDidLoad(){
     console.log("View did load!");
+    this.getClass();
     if(!this.globalVariables.token){
       let toast = this.toastCtrl.create({
       message: 'ERR!',
@@ -48,7 +49,7 @@ export class LandingPage {
   }
 
   private getClass(){
-    this.http.get('http://lyra.b4zz-pony.de:3000/classrooms?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId).map(res => res.json()).catch(this.handleError).subscribe(data => 
+    return this.http.get('http://lyra.b4zz-pony.de:3000/classes?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId).map(res => res.json()).catch(this.handleError).subscribe(data => 
     {data.forEach(element => {
       this.classes.push(element);
     });
@@ -71,13 +72,7 @@ private addStudent(myEvent){
     popover.present({
       ev: myEvent
     });
-
-  //this.popoverCtrl.create(popover, {});
-  /*this.http.post('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId, this.object).subscribe(res => {
-        console.log(res.json());
-      }, (err) => {
-        console.log(err);
-	})*/};
+  };
 
 private handleError (error: Response | any) {
     let errMsg: string;
