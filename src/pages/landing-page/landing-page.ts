@@ -20,6 +20,8 @@ export class LandingPage {
   students = [];
   classes = [];
 
+  _class = "";
+
   //Create Schüler, Class - Name - Picture
   object = {
     "fname": "Teddy",
@@ -29,52 +31,61 @@ export class LandingPage {
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public globalVariables: globalVariables, public popoverCtrl: PopoverController, public toastCtrl: ToastController) {
-     
+
   }
 
   //check Token?
-  ionViewDidLoad(){
+  ionViewDidLoad() {
     console.log("View did load!");
     this.getClass();
-    if(!this.globalVariables.token){
+    if (!this.globalVariables.token) {
       let toast = this.toastCtrl.create({
-      message: 'ERR!',
-      duration: 3000
+        message: 'ERR!',
+        duration: 3000
       });
       toast.present();
     }
-    else{
+    else {
       console.log();
     }
   }
 
-  private getClass(){
-    return this.http.get('http://lyra.b4zz-pony.de:3000/classes?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId).map(res => res.json()).catch(this.handleError).subscribe(data => 
-    {data.forEach(element => {
-      this.classes.push(element);
-    });
-    console.log(this.classes);
-    });
-  }
-
-  private getStudent(){
-  return this.http.get('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId).map(res => res.json()).catch(this.handleError).subscribe(data => {
-    data.forEach(element => {
-      this.students.push(element);
-    });
-    console.log(this.students);
+  private getClass() {
+    return this.http.get('http://lyra.b4zz-pony.de:3000/classes?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId).map(res => res.json()).catch(this.handleError).subscribe(data => {
+      data.forEach(element => {
+        this.classes.push(element);
+      });
+      console.log(this.classes);
     });
   }
 
-private addStudent(myEvent){
-  //PopUp and PopOver
+  private getStudent() {
+    return this.http.get('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId).map(res => res.json()).catch(this.handleError).subscribe(data => {
+      data.forEach(element => {
+        this.students.push(element);
+      });
+      console.log(this.students);
+    });
+  }
+
+  private createClass() {
+    var newClass = {"classname": this._class};
+    return this.http.post('http://lyra.b4zz-pony.de:3000/classes?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId, newClass).catch(this.handleError).subscribe(res => {
+          console.log(res.json());
+    }), (err) => {
+          console.log(err);
+    };
+  }
+
+  private addStudent(myEvent) {
+    //PopUp and PopOver
     let popover = this.popoverCtrl.create(AddStudent);
     popover.present({
       ev: myEvent
     });
   };
 
-private handleError (error: Response | any) {
+  private handleError(error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {
       const body = error.json() || '';
@@ -87,7 +98,7 @@ private handleError (error: Response | any) {
     return Observable.throw(errMsg);
   }
 
-  goToStudent(){
+  goToStudent() {
     this.navCtrl.push(Students);
   }
 

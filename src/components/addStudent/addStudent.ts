@@ -40,6 +40,8 @@ export class AddStudent {
     // POST Student Name and Picture / Class?
     this.student.fname = this._fname;
     this.student.lname = this._lname;
+    //getClassId <-> getClass
+
   /*this.http.post('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId, this.object).subscribe(res => {
           console.log(res.json());
         }, (err) => {

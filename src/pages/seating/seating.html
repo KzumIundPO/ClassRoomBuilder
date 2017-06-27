@@ -6,7 +6,13 @@
 
 </ion-header>
 
-
 <ion-content padding>
+  <div class="row" ng-repeat="place in places" ng-init="placeIndex = $index">
+    <div ng-repeat="i in places" ng-if="i <= places.length">
+        <!--<p>{{places[placeIndex+i]}}</p>-->
+        <p>{{places[i]}}</p>
+        
+    </div>
+</div>
 
 </ion-content>
