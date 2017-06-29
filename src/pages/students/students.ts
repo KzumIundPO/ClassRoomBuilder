@@ -3,8 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
+import { PopoverController } from 'ionic-angular';
 
 import { globalVariables } from "../home/globalVariables";
+import { AddStudent } from '../../components/addStudent/addStudent';
 
 
 @IonicPage()
@@ -16,7 +18,7 @@ export class Students {
 
   students = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public globalVariables: globalVariables) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public globalVariables: globalVariables, public popoverCtrl: PopoverController) {
 
   }
 
@@ -24,13 +26,17 @@ export class Students {
     console.log(item);
   }
 
-  private addStudent() {
+  private addStudent(myEvent) {
     //PopUp and PopOver?
     /*this.http.post('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId, this.object).subscribe(res => {
           console.log(res.json());
         }, (err) => {
           console.log(err);
     })*/
+    let popover = this.popoverCtrl.create(AddStudent);
+    popover.present({
+      ev: myEvent
+    });
   }
 
   //Get Students when entering

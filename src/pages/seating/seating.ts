@@ -16,6 +16,7 @@ export class Seating {
   test = [];
 
   seating = [];
+  classes = [];
 
   _rows: any;
   _places: any;
@@ -35,10 +36,10 @@ export class Seating {
 
       for (var y = 0; y < maxSeats; y++) {
         //get current Seat
-        if(y <= maxSeats){
-            var currentSeat = y;
+        if (y <= maxSeats) {
+          var currentSeat = y;
         }
-        else{
+        else {
           break;
         }
 
@@ -90,30 +91,36 @@ export class Seating {
     } 
   }*/
 
-  private save(){
+  private save() {
     return this.http.post('http://lyra.b4zz-pony.de:3000/seating?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId, this.seating).catch(this.handleError).subscribe(res => {
-          console.log(res.json());
+      console.log(res.json());
     }), (err) => {
-          console.log(err);
+      console.log(err);
     };
   }
 
-  private print(){
+  private print() {
 
   }
 
-  private getStudents(){
+  private getStudents() {
     console.log("getStudents");
   }
 
-  private showPopUp(){
+  private showPopUp() {
     console.log("showPopUp");
   }
 
+  //Load classes on entering the view
   ionViewDidEnter() {
-
+    this.http.get('http://lyra.b4zz-pony.de:3000/classes?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId).map(res => res.json()).catch(this.handleError).subscribe(data => {
+      data.forEach(element => {
+        this.classes.push(element);
+      });
+      console.log(this.classes);
+    });
   }
-  
+
   private handleError(error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {

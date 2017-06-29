@@ -9,6 +9,12 @@
 <ion-content padding>
   <ion-list>
     <ion-item>
+      <ion-label>Klasse</ion-label>
+      <ion-select [(ngModel)]="classes">
+        <ion-option *ngFor="let class of classes" [value]="class"></ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
       <ion-label>Reihen:</ion-label>
       <ion-input type="number" max="12" [(ngModel)]="_rows"></ion-input>
     </ion-item>

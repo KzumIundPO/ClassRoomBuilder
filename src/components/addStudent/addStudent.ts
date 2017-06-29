@@ -13,47 +13,52 @@ export class AddStudent {
   _lname = "";
 
   classes = [];
-  
+
   student = {
     "fname": "<blank>",
     "lname": "<blank>",
     "classId": "<blank>",
-    "pathToPicture": "/home/aletuna/bla.jpg"
+    //TODO  -------- !!!! "picture_base64": "/home/aletuna/bla.jpg"
   };
 
-  text: string;
-
   constructor(public http: Http, public globalVariables: globalVariables) {
-    this.text = 'Hello World';
+
   }
 
-  private getClasses(){
-    this.http.get('http://lyra.b4zz-pony.de:3000/classrooms?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId).map(res => res.json()).catch(this.handleError).subscribe(data => 
-    {data.forEach(element => {
-      this.classes.push(element);
+  previewFile() {
+    var fileInput = (<HTMLInputElement>document.querySelector('input[type=file]')).files[0];
+    var reader = new FileReader();
+
+    reader.addEventListener("load", function (e) {
+      let dataURL = reader.result;
     });
-    console.log(this.classes);
-    });
+    console.log(fileInput);
+    reader.readAsDataURL(fileInput);
+    console.log(fileInput);
   }
 
-  private addNewStudent(){
+  private itemSelected(item) {
+    //class selected
+  }
+
+  private addNewStudent() {
     // POST Student Name and Picture / Class?
     this.student.fname = this._fname;
     this.student.lname = this._lname;
     //getClassId <-> getClass
 
-  /*this.http.post('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId, this.object).subscribe(res => {
-          console.log(res.json());
-        }, (err) => {
-          console.log(err);
-    })*/
+    /*this.http.post('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId, this.object).subscribe(res => {
+            console.log(res.json());
+          }, (err) => {
+            console.log(err);
+      })*/
     //picture?
 
 
     console.log(this.student);
   }
 
-   private handleError (error: Response | any) {
+  private handleError(error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {
       const body = error.json() || '';

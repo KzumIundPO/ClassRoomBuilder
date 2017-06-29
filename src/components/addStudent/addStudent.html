@@ -1,6 +1,3 @@
-<div>
-  {{text}}
-</div>
 <ion-list>
   <ion-item>
     <ion-label>Vorname</ion-label>
@@ -11,12 +8,10 @@
     <ion-input type="text" [(ngModel)]="_lname"></ion-input>
   </ion-item>
   <ion-item>
-    <input type="file" accept="image/*" id="upload"/>
+    <input type="file" accept="image/*" id="fileInput" onchange="previewFile()"/>
   </ion-item>
   <!-- Drop Down for Class? -->
-    <ion-item item-left>
-      <ion-label>Klasse</ion-label>
-      <ion-select *ngFor="let class of classes"></ion-select>
-      <ion-option>{{class}}</ion-option>
-    </ion-item>
+  <ion-item>
+    <button (click)="addStudent()" ion-button ></button>
+  </ion-item>
 </ion-list>
