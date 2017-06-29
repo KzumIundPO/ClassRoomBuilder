@@ -7,12 +7,34 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="row" ng-repeat="place in places" ng-init="placeIndex = $index">
-    <div ng-repeat="i in places" ng-if="i <= places.length">
-        <!--<p>{{places[placeIndex+i]}}</p>-->
-        <p>{{places[i]}}</p>
-        
-    </div>
-</div>
-
+  <ion-list>
+    <ion-item>
+      <ion-label>Reihen:</ion-label>
+      <ion-input type="number" max="12" [(ngModel)]="_rows"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Sitzplätze pro Reihe:</ion-label>
+      <ion-input type="number" max="24" [(ngModel)]="_places"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button (click)="createSeatPlan(_rows, _places)" ion-button full>Sitzplan erstellen</button>
+    </ion-item>
+  </ion-list>
+  <ion-grid>
+    <!--*ngIf="seat.x == row_index && seat.y == seat_index"-->
+    <ion-row *ngFor="let row of seating; let row_index = index">
+      <ion-col *ngFor="let seat of row; let seat_index = index">
+        {{seat.studentId}}, {{seat_index}}
+        <button (click)="showPopUp()" ion-button></button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list>
+    <ion-item>
+      <button (click)="save()" ion-button full>Speichern</button>
+    </ion-item>
+    <ion-item>
+      <button (click)="print()" ion-button full>Drucken</button>
+    </ion-item>
+  </ion-list>
 </ion-content>

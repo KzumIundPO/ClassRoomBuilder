@@ -1,12 +1,3 @@
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Students</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-<ion-content padding>
   <ion-list *ngFor="let student of students" (click)="itemSelected(student)">
     <ion-item>
       <ion-avatar item-left>
@@ -16,5 +7,3 @@
       <p>{{student.class}}</p>
     </ion-item>
   </ion-list>
-  <button (click)="addStudent()" ion-button item-center>Schüler hinzufügen</button>
-</ion-content>

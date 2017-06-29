@@ -26,14 +26,14 @@ export class HomePage {
 
   //NAVIGATION -> Landing Page Main
   goToLandingPageMain() {
-    if(!this.globalVariables.token){
+    if (!this.globalVariables.token) {
       let toast = this.toastCtrl.create({
-      message: 'Can not Login!',
-      duration: 5000
+        message: 'Can not Login!',
+        duration: 5000
       });
       toast.present();
     }
-    else{
+    else {
       this.navCtrl.push(LandingPageMain);
     }
   }
@@ -47,18 +47,18 @@ export class HomePage {
 
   //error and response handling
   private getToken() {
-        let pw = this.hashPassword(this._password);
-        return this.http.get('http://lyra.b4zz-pony.de:3000/authentication?uname=' + this._username + '&passHash=' + pw).map(res => res.json()).catch(this.handleError).subscribe(data => {
-        this.userInfo = data;
-        this.globalVariables.token = this.userInfo["token"];
-        this.globalVariables.isAdmin = this.userInfo["isAdmin"];
-        this.globalVariables.accountId = this.userInfo["accountId"];
-        console.log(this.globalVariables.token);
-        console.log(this.userInfo);
-        this.goToLandingPageMain();
-      })
+    let pw = this.hashPassword(this._password);
+    return this.http.get('http://lyra.b4zz-pony.de:3000/authentication?uname=' + this._username + '&passHash=' + pw).map(res => res.json()).catch(this.handleError).subscribe(data => {
+      this.userInfo = data;
+      this.globalVariables.token = this.userInfo["token"];
+      this.globalVariables.isAdmin = this.userInfo["isAdmin"];
+      this.globalVariables.accountId = this.userInfo["accountId"];
+      console.log(this.globalVariables.token);
+      console.log(this.userInfo);
+      this.goToLandingPageMain();
+    })
   }
-   private handleError (error: Response | any) {
+  private handleError(error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {
       const body = error.json() || '';
