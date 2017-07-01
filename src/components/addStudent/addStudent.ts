@@ -27,14 +27,14 @@ export class AddStudent {
 
   }
 
-  private loadPicture() {
+  private loadPicture(student) {
     var fileInput = (<HTMLInputElement>document.querySelector('input[type=file]')).files[0];
     var reader = new FileReader();
 
     //Get base64 String from Function
     reader.addEventListener("load", function () {
       let dataURL = reader.result;
-      console.log(dataURL);
+      student.picture_base64 = dataURL;
       return dataURL;
     }, false);
 
@@ -42,9 +42,9 @@ export class AddStudent {
       reader.readAsDataURL(fileInput);
       console.log(fileInput);
     }
-
+    
   }
-
+  
   private itemSelected(item) {
     //class selected
   }
@@ -53,7 +53,6 @@ export class AddStudent {
     // POST Student Name and Picture / Class?
     this.student.fname = this._fname;
     this.student.lname = this._lname;
-    //this.student.picture_base64 = this.loadPicture();
 
     //getClassId <-> getClass
 
