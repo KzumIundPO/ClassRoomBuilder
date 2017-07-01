@@ -8,25 +8,29 @@
 
 <ion-content padding>
 
-  <ion-list row no-lines>
-    <ion-item>
-      <!--<button (click)="goToLandingPage()" ion-button round full>Anlegen</button>-->
-      <ion-buttons start>
-        <button ion-button round large solid strong icon-left (click)="goToLandingPage()">
+  <div class="align">
+    <ion-list row no-lines>
+
+      <ion-item>
+        <!--<button (click)="goToLandingPage()" ion-button round full>Anlegen</button>-->
+        <ion-buttons start>
+          <button ion-button round large solid strong icon-left (click)="goToLandingPage()">
         <ion-icon name="add"></ion-icon>
         <h3>Anlegen</h3>
       </button>
-      </ion-buttons>
-    </ion-item>
-    <ion-item>
-      <button (click)="goToStudents()" ion-button full>Schüler</button>
-    </ion-item>
-    <ion-item>
-      <button (click)="goToSeating()" ion-button full>Sitzplan erstellen</button>
-    </ion-item>
-    <ion-item>
-      <button (click)="goToPanel()" ion-button full>Panel</button>
-    </ion-item>
-  </ion-list>
+        </ion-buttons>
+      </ion-item>
+
+      <ion-item>
+        <button (click)="goToStudents()" ion-button full>Schüler</button>
+      </ion-item>
+      <ion-item>
+        <button (click)="goToSeating()" ion-button full>Sitzplan erstellen</button>
+      </ion-item>
+      <ion-item>
+        <button (click)="goToPanel()" ion-button full>Panel</button>
+      </ion-item>
+    </ion-list>
+  </div>
 
 </ion-content>

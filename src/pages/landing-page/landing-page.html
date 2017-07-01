@@ -7,32 +7,34 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list row>
-    <ion-item item-left>
-      <ion-label>Klasse</ion-label>
-      <ion-input type="text" [(ngModel)]="_class"></ion-input>
-    </ion-item>
-    <ion-item item-left>
-      <button (click)="createClass()" ion-button item-left>Klasse anlegen</button>
-    </ion-item>
-    <ion-item item-right>
-      <button (click)="getStudent()" ion-button item-right>Schüler anzeigen</button>
-    </ion-item>
-  </ion-list>
+  <div class="align">
+    <ion-list row no-lines>
+      <ion-item item-left>
+        <ion-label>Klasse</ion-label>
+        <ion-input type="text" [(ngModel)]="_class"></ion-input>
+      </ion-item>
+      <ion-item item-left>
+        <button (click)="createClass()" ion-button item-left>Klasse anlegen</button>
+      </ion-item>
+      <ion-item item-right>
+        <button (click)="getStudent()" ion-button item-right>Schüler anzeigen</button>
+      </ion-item>
+    </ion-list>
 
-  <ion-list>
-    <ion-item>
-      <button (click)="addStudent()" ion-button full>Schüler hinzufügen</button>
-    </ion-item>
-  </ion-list>
-  <ion-list *ngFor="let student of students">
-    <ion-item>
-      <ion-avatar item-left>
-        <ion-icon name="images"></ion-icon>
-      </ion-avatar>
-      <h2>{{student.fname}}, {{student.lname}}</h2>
-      <p>{{student.class}}</p>
-    </ion-item>
-  </ion-list>
-<button (click)="goToStudent()" ion-button full>Schüler</button>
+    <ion-list>
+      <ion-item>
+        <button (click)="addStudent()" ion-button full>Schüler hinzufügen</button>
+      </ion-item>
+    </ion-list>
+    <ion-list *ngFor="let student of students">
+      <ion-item>
+        <ion-avatar item-left>
+          <ion-icon name="images"></ion-icon>
+        </ion-avatar>
+        <h2>{{student.fname}}, {{student.lname}}</h2>
+        <p>{{student.class}}</p>
+      </ion-item>
+    </ion-list>
+    <button (click)="goToStudent()" ion-button full>Schüler</button>
+  </div>
 </ion-content>
