@@ -7,7 +7,7 @@ import { ToastController } from 'ionic-angular';
 import { PopoverController } from 'ionic-angular';
 
 import { globalVariables } from "../home/globalVariables";
-import { Students } from '../students/students';
+import { Seating } from '../seating/seating';
 import { AddStudent } from '../../components/addStudent/addStudent';
 
 @IonicPage()
@@ -112,8 +112,8 @@ export class LandingPage {
     return Observable.throw(errMsg);
   }
 
-  goToStudent() {
-    this.navCtrl.push(Students);
+  goToSeating() {
+    this.navCtrl.push(Seating);
   }
 
 }

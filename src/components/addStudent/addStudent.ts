@@ -27,19 +27,22 @@ export class AddStudent {
 
   }
 
-  loadPicture() {
+  private loadPicture() {
     var fileInput = (<HTMLInputElement>document.querySelector('input[type=file]')).files[0];
     var reader = new FileReader();
 
     //Get base64 String from Function
-    reader.addEventListener("load", function (e) {
+    reader.addEventListener("load", function () {
       let dataURL = reader.result;
       console.log(dataURL);
       return dataURL;
-    });
-    reader.readAsDataURL(fileInput);
-    console.log(fileInput);
-    return fileInput;
+    }, false);
+
+    if (fileInput) {
+      reader.readAsDataURL(fileInput);
+      console.log(fileInput);
+    }
+
   }
 
   private itemSelected(item) {

@@ -30,7 +30,7 @@
     <!--*ngIf="seat.x == row_index && seat.y == seat_index"-->
     <ion-row *ngFor="let row of seating; let row_index = index">
       <ion-col *ngFor="let seat of row; let seat_index = index">
-        {{seat.studentId}}, {{seat_index}}
+        {{seat.fname}}, {{seat_lname}}
         <button (click)="showPopUp()" ion-button></button>
       </ion-col>
     </ion-row>
