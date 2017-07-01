@@ -9,19 +9,23 @@
 <ion-content padding>
   <ion-row>
     <ion-col text-center>
-
-      <ion-list>
-        <ion-item>
-          <ion-label>Username</ion-label>
-          <ion-input type="text" [(ngModel)]="_username"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>Password</ion-label>
-          <ion-input type="password" [(ngModel)]="_password"></ion-input>
-        </ion-item>
-      </ion-list>
-      <div padding>
-        <button (click)="getToken()" ion-button full>Login</button>
+      <div class="align">
+        <ion-list>
+          <ion-item>
+          <!-- TODO LOGO as img -->
+          </ion-item>
+          <ion-item>
+            <ion-label>Benutzername</ion-label>
+            <ion-input type="text" [(ngModel)]="_username"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Passwort</ion-label>
+            <ion-input type="password" [(ngModel)]="_password"></ion-input>
+          </ion-item>
+        </ion-list>
+        <div padding>
+          <button (click)="getToken()" ion-button round>Login</button>
+        </div>
       </div>
     </ion-col>
   </ion-row>

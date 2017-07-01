@@ -8,10 +8,10 @@
     <ion-input type="text" [(ngModel)]="_lname"></ion-input>
   </ion-item>
   <ion-item>
-    <input type="file" accept="image/*" id="fileInput" onchange="previewFile()"/>
+    <input type="file" accept="image/*" id="fileInput" (change)="loadPicture()"/>
   </ion-item>
   <!-- Drop Down for Class? -->
   <ion-item>
-    <button (click)="addStudent()" ion-button ></button>
+    <button (click)="addNewStudent()" ion-button >Hinzufügen</button>
   </ion-item>
 </ion-list>

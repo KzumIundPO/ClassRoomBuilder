@@ -8,14 +8,20 @@
 
 <ion-content padding>
 
-  <ion-list row>
+  <ion-list row no-lines>
     <ion-item>
-      <button (click)="goToLandingPage()" ion-button full>Anlegen</button>
+      <!--<button (click)="goToLandingPage()" ion-button round full>Anlegen</button>-->
+      <ion-buttons start>
+        <button ion-button round large solid strong icon-left (click)="goToLandingPage()">
+        <ion-icon name="add"></ion-icon>
+        <h3>Anlegen</h3>
+      </button>
+      </ion-buttons>
     </ion-item>
-     <ion-item>
+    <ion-item>
       <button (click)="goToStudents()" ion-button full>Schüler</button>
     </ion-item>
-     <ion-item>
+    <ion-item>
       <button (click)="goToSeating()" ion-button full>Sitzplan erstellen</button>
     </ion-item>
     <ion-item>

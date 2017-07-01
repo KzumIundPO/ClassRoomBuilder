@@ -14,27 +14,32 @@ export class AddStudent {
 
   classes = [];
 
+  b64s: any;
+
   student = {
     "fname": "<blank>",
     "lname": "<blank>",
     "classId": "<blank>",
-    //TODO  -------- !!!! "picture_base64": "/home/aletuna/bla.jpg"
+    "picture_base64": ""
   };
 
   constructor(public http: Http, public globalVariables: globalVariables) {
 
   }
 
-  previewFile() {
+  loadPicture() {
     var fileInput = (<HTMLInputElement>document.querySelector('input[type=file]')).files[0];
     var reader = new FileReader();
 
+    //Get base64 String from Function
     reader.addEventListener("load", function (e) {
       let dataURL = reader.result;
+      console.log(dataURL);
+      return dataURL;
     });
-    console.log(fileInput);
     reader.readAsDataURL(fileInput);
     console.log(fileInput);
+    return fileInput;
   }
 
   private itemSelected(item) {
@@ -45,6 +50,8 @@ export class AddStudent {
     // POST Student Name and Picture / Class?
     this.student.fname = this._fname;
     this.student.lname = this._lname;
+    //this.student.picture_base64 = this.loadPicture();
+
     //getClassId <-> getClass
 
     /*this.http.post('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId, this.object).subscribe(res => {

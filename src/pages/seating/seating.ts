@@ -21,6 +21,9 @@ export class Seating {
   _rows: any;
   _places: any;
 
+  _classId;
+  _description;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public globalVariables: globalVariables) {
 
   }
@@ -30,6 +33,7 @@ export class Seating {
     var maxRows = rows;
     var maxSeats = seats;
     var row_ = [];
+
     for (var x = 0; x < maxRows; x++) {
       //get current Row
       var currentRow = x;
@@ -92,7 +96,13 @@ export class Seating {
   }*/
 
   private save() {
-    return this.http.post('http://lyra.b4zz-pony.de:3000/seating?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId, this.seating).catch(this.handleError).subscribe(res => {
+    let oSeating = {
+      "classId": "0",
+      "description": "E33FI99 erster Sitzplan",
+      "seatingData": this.seating
+    };
+
+    return this.http.post('http://lyra.b4zz-pony.de:3000/seating?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId, oSeating).catch(this.handleError).subscribe(res => {
       console.log(res.json());
     }), (err) => {
       console.log(err);

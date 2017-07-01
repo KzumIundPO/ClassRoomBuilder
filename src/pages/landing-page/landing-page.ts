@@ -21,6 +21,7 @@ export class LandingPage {
   classes = [];
 
   _class = "";
+  classIdCreated_ = "";
 
   //Create Schüler, Class - Name - Picture
   object = {
@@ -62,18 +63,31 @@ export class LandingPage {
   private getStudent() {
     return this.http.get('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId).map(res => res.json()).catch(this.handleError).subscribe(data => {
       data.forEach(element => {
-        this.students.push(element);
+        if (element.classId == this.classIdCreated_) {
+          this.students.push(element);
+        }
+        else {
+          let toast = this.toastCtrl.create({
+            message: 'Noch keine Schüler in dieser Klasse!',
+            duration: 3000
+          });
+          toast.present();
+        }
+
       });
       console.log(this.students);
     });
   }
 
   private createClass() {
-    var newClass = {"classname": this._class};
+    var newClass = { "classname": this._class };
     return this.http.post('http://lyra.b4zz-pony.de:3000/classes?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId, newClass).catch(this.handleError).subscribe(res => {
-          console.log(res.json());
+      let r = res.json();
+      this.classIdCreated_ = r.classId.toString();
+      console.log(this.classIdCreated_);
+      console.log(res.json());
     }), (err) => {
-          console.log(err);
+      console.log(err);
     };
   }
 
