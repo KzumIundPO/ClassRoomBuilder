@@ -6,8 +6,14 @@ import { Component } from '@angular/core';
 })
 export class Seating {
 
+  _createUserName = "";
+  _createPassword = "";
+
+  text: string;
+
   constructor() {
     console.log('Hello Popover Component');
+    this.text = 'Hello World';
   }
 
   private addNewUser(){
@@ -19,3 +25,4 @@ export class Seating {
   }
 
 }
+

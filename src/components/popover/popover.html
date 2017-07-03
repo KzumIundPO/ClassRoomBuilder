@@ -1,16 +1,9 @@
-<div>
-  {{text}}
-</div>
-<ion-list>
-  <ion-item>
-    <ion-label>Username</ion-label>
-    <ion-input type="text" [(ngModel)]="_createUserName"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Password</ion-label>
-    <ion-input type="password" [(ngModel)]="_createPassword"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-checkbox [(ngModel)]="isAdmin" (ionChange)="updateAdminStatus()"></ion-checkbox>
-  </ion-item>
-</ion-list>
+  <ion-list *ngFor="let student of students" (click)="itemSelected(student)">
+    <ion-item>
+      <ion-avatar item-left>
+        <ion-icon>{{student.picture_base64}}</ion-icon>
+      </ion-avatar>
+      <h2>{{student.fname}}, {{student.lname}}</h2>
+      <p>{{student.class}}</p>
+    </ion-item>
+  </ion-list>

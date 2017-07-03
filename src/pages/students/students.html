@@ -7,16 +7,16 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-list *ngFor="let student of students" (click)="itemSelected(student)">
+    <ion-item>
+      <ion-avatar item-left>
+        <ion-icon name="images"></ion-icon>
+      </ion-avatar>
+      <h2>{{student.fname}}, {{student.lname}}</h2>
+      <p>{{student.class}}</p>
+    </ion-item>
+  </ion-list>
   <div class="align">
-    <ion-list *ngFor="let student of students" (click)="itemSelected(student)">
-      <ion-item>
-        <ion-avatar item-left>
-          <ion-icon name="images"></ion-icon>
-        </ion-avatar>
-        <h2>{{student.fname}}, {{student.lname}}</h2>
-        <p>{{student.class}}</p>
-      </ion-item>
-    </ion-list>
     <button (click)="addStudent()" ion-button item-center>Schüler hinzufügen</button>
   </div>
 </ion-content>

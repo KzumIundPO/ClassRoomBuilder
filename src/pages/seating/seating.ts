@@ -4,6 +4,8 @@ import * as $ from 'jquery';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { globalVariables } from "../home/globalVariables";
+import { PopoverController } from 'ionic-angular';
+import { AddStudent } from '../../components/addStudent/addStudent';
 
 @IonicPage()
 @Component({
@@ -12,8 +14,10 @@ import { globalVariables } from "../home/globalVariables";
 })
 export class Seating {
 
+  edited = false;
   places = [];
   test = [];
+  _desc = "";
 
   seating = [];
   classes = [];
@@ -24,7 +28,7 @@ export class Seating {
   _classId;
   _description;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public globalVariables: globalVariables) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public globalVariables: globalVariables, public popoverCtrl: PopoverController) {
 
   }
 
@@ -97,8 +101,8 @@ export class Seating {
 
   private save() {
     let oSeating = {
-      "classId": "0",
-      "description": "E33FI99 erster Sitzplan",
+      "classId": this.globalVariables.classForStudent,
+      "description": this._desc,
       "seatingData": this.seating
     };
 
@@ -117,8 +121,25 @@ export class Seating {
     console.log("getStudents");
   }
 
-  private showPopUp() {
+  private showPopUp(myEvent) {
     console.log("showPopUp");
+    var object = {
+      "fname": "Teddy",
+      "lname": "Test",
+      "classId": "1",
+      "pathToPicture": "/home/aletuna/bla.jpg"
+    };
+    let popover = this.popoverCtrl.create(AddStudent);
+    popover.present({
+      ev: myEvent
+    });
+    /*
+    var x = <HTMLElement>document.querySelector('test');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }*/
   }
 
   //Load classes on entering the view

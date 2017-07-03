@@ -55,12 +55,13 @@ export class AddStudent {
     this.student.lname = this._lname;
 
     //getClassId <-> getClass
+    this.student.classId = this.globalVariables.classForStudent;
 
-    /*this.http.post('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId, this.object).subscribe(res => {
+    this.http.post('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId, this.student).subscribe(res => {
             console.log(res.json());
           }, (err) => {
             console.log(err);
-      })*/
+      })
     //picture?
 
 

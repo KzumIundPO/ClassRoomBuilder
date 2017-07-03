@@ -64,6 +64,7 @@ export class LandingPage {
     return this.http.get('http://lyra.b4zz-pony.de:3000/students?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId).map(res => res.json()).catch(this.handleError).subscribe(data => {
       data.forEach(element => {
         if (element.classId == this.classIdCreated_) {
+          console.log(this.classIdCreated_);
           this.students.push(element);
         }
         else {
@@ -84,6 +85,8 @@ export class LandingPage {
     return this.http.post('http://lyra.b4zz-pony.de:3000/classes?token=' + this.globalVariables.token + '&accountId=' + this.globalVariables.accountId, newClass).catch(this.handleError).subscribe(res => {
       let r = res.json();
       this.classIdCreated_ = r.classId.toString();
+      this.globalVariables.classForStudent = this.classIdCreated_;
+      console.log(this.globalVariables.classForStudent)
       console.log(this.classIdCreated_);
       console.log(res.json());
     }), (err) => {
